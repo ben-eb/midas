@@ -1,0 +1,44 @@
+{
+  "name": "midas",
+  "version": "0.0.0",
+  "description": "Syntax highlighter based on PostCSS.",
+  "main": "dist/index.js",
+  "files": [
+    "LICENSE-MIT",
+    "dist"
+  ],
+  "scripts": {
+    "prepublish": "babel src --out-dir dist --ignore /__tests__/ && node theme.js",
+    "test": "babel-tape-runner \"src/**/__tests__/*.js\" | tap-spec"
+  },
+  "keywords": [
+    "css",
+    "highlight",
+    "postcss"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^5.8.21",
+    "babel-tape-runner": "^1.2.0",
+    "js-yaml": "^3.3.1",
+    "postcss-map": "^0.4.1",
+    "tap-spec": "^4.0.2",
+    "tape": "^4.1.0"
+  },
+  "homepage": "https://github.com/ben-eb/midas",
+  "author": {
+    "name": "Ben Briggs",
+    "email": "beneb.info@gmail.com",
+    "url": "http://beneb.info"
+  },
+  "repository": "ben-eb/midas",
+  "dependencies": {
+    "html-tags": "^1.1.1",
+    "minimist": "^1.1.3",
+    "postcss": "^5.0.0",
+    "postcss-selector-parser": "^1.1.4",
+    "postcss-value-parser": "^1.1.0",
+    "read-file-stdin": "^0.2.0",
+    "write-file-stdout": "0.0.2"
+  }
+}
