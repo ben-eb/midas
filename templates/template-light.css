@@ -1,0 +1,80 @@
+.midas {
+    background: #map(base07);
+    color: #map(base02);
+}
+
+.midas__property {
+    font-style: italic;
+}
+
+.midas__comment {
+    color: #map(base04);
+}
+
+.midas__string {
+    color: #map(base0B);
+}
+
+.midas__function-name {
+    color: #map(base0C);
+}
+
+.midas__important {
+    color: #map(base0B);
+}
+
+.midas__hex-value {
+    color: #map(base09);
+}
+
+.midas__hex-color {
+    color: #map(base0C);
+}
+
+.midas__number,
+.midas__word {
+    color:#map(base09);
+}
+
+.midas__vendor-prefix {
+    color: #map(base04);
+}
+
+/**
+ * Selectors
+ */
+
+.midas__selector {
+    color: #map(base0E);
+}
+
+.midas__tag {
+    color: #map(base08);
+    text-decoration: underline;
+}
+
+.midas__id {
+    color: #map(base0D);
+}
+
+.midas__attribute-name,
+.midas__class,
+.midas__pseudo {
+    color: #map(base09);
+}
+
+.midas__attribute-value {
+    color: #map(base0B);
+}
+
+/**
+ * At rules
+ */
+
+.midas__at-rule-name {
+    color: #map(base0E);
+}
+
+.midas__at-rule-keyword {
+    color: #map(base09);
+}
