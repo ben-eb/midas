@@ -8,4 +8,7 @@ let stringify = (node, builder) => {
     str.stringify(node);
 };
 
-export default css => postcss().process(css, {stringifier: stringify});
+let midas = css => postcss().process(css, {stringifier: stringify});
+midas.stringify = stringify;
+
+export default midas;

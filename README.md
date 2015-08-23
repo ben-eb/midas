@@ -45,7 +45,7 @@ light & dark variants) which are used to style this HTML.
 
 ## API
 
-### midas(css)
+### `midas(css)`
 
 midas exposes a PostCSS processor instance. This means that you can use it
 both asynchronously:
@@ -81,6 +81,11 @@ midas also ships with a CLI app. To see the available options, just run:
 ```sh
 $ midas --help
 ```
+
+### `postcss().process(css, {stringifier: midas})`
+
+midas can also be loaded into an existing PostCSS instance, so that you can
+highlight CSS that is transformed by PostCSS plugins.
 
 ## Contributing
 
