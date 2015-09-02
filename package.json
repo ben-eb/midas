@@ -25,7 +25,7 @@
     "babel": "^5.8.21",
     "babel-tape-runner": "^1.2.0",
     "js-yaml": "^3.3.1",
-    "postcss-map": "^0.4.1",
+    "postcss-map": "^0.6.0",
     "tap-spec": "^4.0.2",
     "tape": "^4.1.0"
   },

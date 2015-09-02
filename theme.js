@@ -1,7 +1,6 @@
 'use strict';
 
-// Load PostCSS 4.x until postcss-map supports 5.x.
-var postcss = require('postcss-map/node_modules/postcss');
+var postcss = require('postcss');
 var map = require('postcss-map');
 var fs = require('fs');
 var path = require('path');
