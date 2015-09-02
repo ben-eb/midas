@@ -47,16 +47,18 @@ export default class MidasStringifier extends Stringifier {
                     return;
                 }
                 if (child.type === 'function' && !child.value) {
-                    child.nodes.forEach(n => {
-                        if (n.value.lastIndexOf(':') === n.value.length - 1) {
-                            let p = n.value.slice(0, n.value.length - 1);
-                            n.value = span(p, 'property') + span(':', 'colon');
+                    child.nodes.forEach((n, i) => {
+                        if (n.type === 'div' && n.value === ':') {
+                            n.value = span(':', 'colon');
                         }
                         if (n.type === 'word') {
                             let number = unit(n.value);
                             if (number) {
                                 n.value = span(n.value, 'number');
                                 return;
+                            }
+                            if (child.nodes[i + 1].value === ':') {
+                                n.value = span(n.value, 'property');
                             }
                         }
                     });
