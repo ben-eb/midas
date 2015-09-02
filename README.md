@@ -6,7 +6,7 @@
     <br>
 </h1>
 
-> Syntax highlighter based on PostCSS.
+> A CSS syntax highlighter based on PostCSS.
 
 [![Build Status](https://travis-ci.org/ben-eb/midas.svg?branch=master)][ci] [![NPM version](https://badge.fury.io/js/midas.svg)][npm] [![Dependency Status](https://gemnasium.com/ben-eb/midas.svg)][deps]
 
