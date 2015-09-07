@@ -1,5 +1,6 @@
 'use strict';
 
+import assign from 'object-assign';
 import htmlTags from 'html-tags';
 import Stringifier from 'postcss/lib/stringifier';
 import selectorParser from 'postcss-selector-parser';
@@ -102,6 +103,14 @@ export default class MidasStringifier extends Stringifier {
         this.builder(span('}', 'brace'), node, 'end');
     }
 
+    constructor (builder, opts = {}) {
+        super(builder);
+
+        this.opts = assign({
+            wrap: true
+        }, opts);
+    }
+
     comment (node) {
         let left  = this.raw(node, 'left',  'commentLeft');
         let right = this.raw(node, 'right', 'commentRight');
@@ -163,9 +172,13 @@ export default class MidasStringifier extends Stringifier {
     }
 
     root (node) {
-        this.builder('<pre class="midas"><code>');
-        super.root(node);
-        this.builder('</code></pre>');
+        if (this.opts.wrap) {
+            this.builder('<pre class="midas"><code>');
+            super.root(node);
+            this.builder('</code></pre>');
+        } else {
+            super.root(node);
+        }
     }
 
     rule (node) {

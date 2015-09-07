@@ -1,3 +1,8 @@
+# 1.2.0
+
+* Adds a `wrap` option to enable configuration of the HTML container used
+  by midas.
+
 # 1.1.2
 
 * Fixes parsing of media query parameters since the recent update to
