@@ -2,6 +2,7 @@
 
 * Adds a `wrap` option to enable configuration of the HTML container used
   by midas.
+* Bump dependencies.
 
 # 1.1.2
 
