@@ -21,6 +21,14 @@ For further details, check out the [website](http://midasjs.com)!
 Pull requests are welcome. If you add functionality, then please add unit tests
 to cover it.
 
+
+## Links
+
+Please help to support this project by [purchasing a midas sticker][sticker].
+
+[sticker]: https://www.stickermule.com/uk/marketplace/11087-midas
+
+
 ## License
 
 Base 16 themes used by this module are MIT © 2012 [Chris Kempson][ck]
