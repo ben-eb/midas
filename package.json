@@ -1,6 +1,6 @@
 {
   "name": "midas",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Syntax highlighter based on PostCSS.",
   "bin": {
     "midas": "bin/cmd.js"
