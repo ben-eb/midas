@@ -1,6 +1,3 @@
-'use strict';
-
-import assign from 'object-assign';
 import htmlTags from 'html-tags';
 import Stringifier from 'postcss/lib/stringifier';
 import selectorParser from 'postcss-selector-parser';
@@ -38,7 +35,7 @@ export default class MidasStringifier extends Stringifier {
             let parsed = valueParser(this.rawValue(node, 'params'));
             parsed.nodes.forEach(child => {
                 if (child.type === 'string') {
-                    let quote = child.quote;
+                    const {quote} = child;
                     child.value = span(quote + child.value + quote, 'string');
                     child.quote = null;
                     return;
@@ -99,57 +96,60 @@ export default class MidasStringifier extends Stringifier {
             after = this.raw(node, 'after', 'emptyBody');
         }
 
-        if (after) { this.builder(after); }
+        if (after) {
+            this.builder(after);
+        }
         this.builder(span('}', 'brace'), node, 'end');
     }
 
     constructor (builder, opts = {}) {
         super(builder);
 
-        this.opts = assign({
-            wrap: true
-        }, opts);
+        this.opts = {
+            wrap: true,
+            ...opts
+        };
     }
 
     comment (node) {
-        let left  = this.raw(node, 'left',  'commentLeft');
-        let right = this.raw(node, 'right', 'commentRight');
+        const left  = this.raw(node, 'left',  'commentLeft');
+        const right = this.raw(node, 'right', 'commentRight');
         this.builder(span(`/*${left}${node.text}${right}*/`, 'comment'), node);
     }
 
     decl (node, semicolon) {
         let between = span(this.raw(node, 'between', 'colon'), 'colon');
         let parsed = valueParser(this.rawValue(node, 'value'));
-        let transform = node => {
-            if (node.type === 'string') {
-                let quote = node.quote;
-                node.value = span(quote + node.value + quote, 'string');
-                node.quote = null;
+        let transform = n => {
+            if (n.type === 'string') {
+                const {quote} = n;
+                n.value = span(quote + n.value + quote, 'string');
+                n.quote = null;
                 return;
             }
-            if (node.type === 'word') {
-                let number = unit(node.value);
+            if (n.type === 'word') {
+                let number = unit(n.value);
                 if (number) {
-                    node.value = span(node.value, 'number');
+                    n.value = span(n.value, 'number');
                     return;
                 }
-                if (!node.value.indexOf('#')) {
-                    let value = span(node.value.slice(1), 'hex-value');
-                    node.value = span('#' + value, 'hex-color');
+                if (!n.value.indexOf('#')) {
+                    let val = span(n.value.slice(1), 'hex-value');
+                    n.value = span('#' + val, 'hex-color');
                     return;
                 }
-                node.value = span(node.value, 'word');
+                n.value = span(n.value, 'word');
                 return;
             }
-            if (node.type === 'function') {
-                node.nodes.forEach(transform);
-                node.value = span(
-                    span(node.value, 'function-name') +
-                    span('(', 'parenthesis') +
-                    stringify(node.nodes) +
-                    span(')', 'parenthesis'),
+            if (n.type === 'function') {
+                n.nodes.forEach(transform);
+                n.value = span(
+                    span(n.value, 'function-name') +
+                    span('(' + n.before, 'parenthesis') +
+                    stringify(n.nodes) +
+                    span(n.after + ')', 'parenthesis'),
                     'function');
-                node.nodes = null;
+                n.nodes = null;
             }
         };
         parsed.nodes.forEach(transform);
@@ -167,7 +167,9 @@ export default class MidasStringifier extends Stringifier {
             string += span(node.raws.important || ' !important', 'important');
         }
 
-        if (semicolon) { string += span(';', 'semicolon'); }
+        if (semicolon) {
+            string += span(';', 'semicolon');
+        }
         this.builder(string, node);
     }
 
@@ -182,13 +184,15 @@ export default class MidasStringifier extends Stringifier {
     }
 
     rule (node) {
-        if (node.selector) { this.selector(node); }
+        if (node.selector) {
+            this.selector(node);
+        }
         this.block(node, span(this.rawValue(node, 'selector'), 'selector'));
     }
 
     selector (node) {
         let transform = selectors => {
-            selectors.eachInside(sel => {
+            selectors.walk(sel => {
                 if (sel.type === 'tag' && ~htmlTags.indexOf(sel.value)) {
                     sel.value = span(sel.value, 'tag');
                 }
@@ -209,8 +213,8 @@ export default class MidasStringifier extends Stringifier {
                             selector.push(span(this.value, 'attribute-value'));
                         }
                         let ai = 'attribute-insensitive';
-                        if (this.raw.insensitive) {
-                            let ci = span(this.raw.insensitive, ai);
+                        if (this.raws.insensitive) {
+                            let ci = span(this.raws.insensitive, ai);
                             selector.push(ci);
                         } else if (this.insensitive) {
                             selector.push(span(' i'), ai);

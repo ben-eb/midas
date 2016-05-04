@@ -12,8 +12,9 @@
     "dist"
   ],
   "scripts": {
-    "prepublish": "babel src --out-dir dist --ignore /__tests__/ && node theme.js",
-    "test": "babel-tape-runner \"src/**/__tests__/*.js\" | tap-spec"
+    "pretest": "eslint src",
+    "prepublish": "del-cli dist && cross-env BABEL_ENV=publish babel src --out-dir dist --ignore /__tests__/ && node theme.js",
+    "test": "ava src/__tests__/*.js"
   },
   "keywords": [
     "css",
@@ -22,12 +23,20 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "babel": "^5.8.23",
-    "babel-tape-runner": "^1.2.0",
+    "ava": "^0.14.0",
+    "babel": "^6.5.2",
+    "babel-cli": "^6.5.1",
+    "babel-core": "^6.5.1",
+    "babel-plugin-add-module-exports": "^0.1.2",
+    "babel-preset-es2015-loose": "^7.0.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-tape-runner": "^2.0.1",
+    "cross-env": "^1.0.7",
+    "del-cli": "^0.2.0",
+    "eslint": "^2.0.0",
+    "eslint-config-cssnano": "^2.0.0",
     "js-yaml": "^3.4.1",
-    "postcss-map": "^0.6.0",
-    "tap-spec": "^4.1.0",
-    "tape": "^4.2.0"
+    "postcss-map": "^0.8.0"
   },
   "homepage": "https://github.com/ben-eb/midas",
   "author": {
@@ -39,11 +48,16 @@
   "dependencies": {
     "html-tags": "^1.1.1",
     "minimist": "^1.2.0",
-    "object-assign": "^4.0.1",
     "postcss": "^5.0.4",
-    "postcss-selector-parser": "^1.2.0",
-    "postcss-value-parser": "^2.0.1",
+    "postcss-selector-parser": "^2.0.0",
+    "postcss-value-parser": "^3.3.0",
     "read-file-stdin": "^0.2.0",
     "write-file-stdout": "0.0.2"
+  },
+  "ava": {
+    "require": "babel-core/register"
+  },
+  "eslintConfig": {
+    "extends": "cssnano"
   }
 }

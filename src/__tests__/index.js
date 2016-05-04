@@ -1,6 +1,4 @@
-'use strict';
-
-import test from 'tape';
+import test from 'ava';
 import midas from '..';
 
 let tests = [{
@@ -51,6 +49,9 @@ let tests = [{
 }, {
     fixture: 'text{fill:black;text-decoration:underline}',
     expected: '<pre class="midas"><code><span class="midas__selector">text</span><span class="midas__brace">{</span><span class="midas__property">fill</span><span class="midas__colon">:</span><span class="midas__value"><span class="midas__word">black</span></span><span class="midas__semicolon">;</span><span class="midas__property">text-decoration</span><span class="midas__colon">:</span><span class="midas__value"><span class="midas__word">underline</span></span><span class="midas__brace">}</span></code></pre>'
+}, {
+    fixture: '*{filter:blur( 5px )}',
+    expected: '<pre class=\"midas\"><code><span class=\"midas__selector\"><span class=\"midas__universal\">*</span></span><span class=\"midas__brace\">{</span><span class=\"midas__property\">filter</span><span class=\"midas__colon\">:</span><span class=\"midas__value\"><span class=\"midas__function\"><span class=\"midas__function-name\">blur</span><span class=\"midas__parenthesis\">( </span><span class=\"midas__number\">5px</span><span class=\"midas__parenthesis\"> )</span></span></span><span class=\"midas__brace\">}</span></code></pre>'
 }];
 
 test('midas stringifier', t => {
@@ -58,6 +59,6 @@ test('midas stringifier', t => {
 
     tests.forEach(spec => {
         let result = midas(spec.fixture).content;
-        t.equal(result, spec.expected);
+        t.deepEqual(result, spec.expected);
     });
 });
