@@ -52,6 +52,9 @@ let tests = [{
 }, {
     fixture: '*{filter:blur( 5px )}',
     expected: '<pre class=\"midas\"><code><span class=\"midas__selector\"><span class=\"midas__universal\">*</span></span><span class=\"midas__brace\">{</span><span class=\"midas__property\">filter</span><span class=\"midas__colon\">:</span><span class=\"midas__value\"><span class=\"midas__function\"><span class=\"midas__function-name\">blur</span><span class=\"midas__parenthesis\">( </span><span class=\"midas__number\">5px</span><span class=\"midas__parenthesis\"> )</span></span></span><span class=\"midas__brace\">}</span></code></pre>'
+}, {
+    fixture: '$small:  34em;\n\n@custom-media --small (width >= $small);',
+    expected: '<pre class=\"midas\"><code><span class=\"midas__property\">$small</span><span class=\"midas__colon\">:  </span><span class=\"midas__value\"><span class=\"midas__number\">34em</span></span><span class=\"midas__semicolon\">;</span>\n\n<span class=\"midas__at-rule\"><span class=\"midas__at-rule-name\">@custom-media</span> --small <span class=\"midas__parenthesis\">(</span>width >= $small<span class=\"midas__parenthesis\">)</span><span class=\"midas__semicolon\">;</span></span></code></pre>'
 }];
 
 test('midas stringifier', t => {

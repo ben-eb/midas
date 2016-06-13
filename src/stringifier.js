@@ -55,7 +55,10 @@ export default class MidasStringifier extends Stringifier {
                                 n.value = span(n.value, 'number');
                                 return;
                             }
-                            if (child.nodes[i + 1].value === ':') {
+                            if (
+                                child.nodes[i + 1] &&
+                                child.nodes[i + 1].value === ':'
+                            ) {
                                 n.value = span(n.value, 'property');
                             }
                         }
