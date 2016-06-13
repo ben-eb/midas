@@ -1,3 +1,8 @@
+# 1.2.2
+
+* midas did not properly parse certain custom media queries and would crash
+  in certain cases; this has now been fixed.
+
 # 1.2.1
 
 * Update postcss-value-parser to v3.3.0.
