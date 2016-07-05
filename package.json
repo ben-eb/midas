@@ -33,7 +33,7 @@
     "babel-tape-runner": "^2.0.1",
     "cross-env": "^1.0.7",
     "del-cli": "^0.2.0",
-    "eslint": "^2.0.0",
+    "eslint": "^3.0.1",
     "eslint-config-cssnano": "^2.0.0",
     "js-yaml": "^3.4.1",
     "postcss-map": "^0.8.0"
