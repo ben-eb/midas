@@ -34,7 +34,7 @@
     "cross-env": "^1.0.7",
     "del-cli": "^0.2.0",
     "eslint": "^2.0.0",
-    "eslint-config-cssnano": "^2.0.0",
+    "eslint-config-cssnano": "^3.0.1",
     "js-yaml": "^3.4.1",
     "postcss-map": "^0.8.0"
   },
