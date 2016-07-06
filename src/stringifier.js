@@ -13,14 +13,14 @@ const mediaTypes = [
     'projection',
     'screen',
     'tty',
-    'tv'
+    'tv',
 ];
 
 const vendors = [
     '-webkit-',
     '-moz-',
     '-ms-',
-    '-o-'
+    '-o-',
 ];
 
 let span = (text, element) => `<span class="midas__${element}">${text}</span>`;
@@ -110,7 +110,7 @@ export default class MidasStringifier extends Stringifier {
 
         this.opts = {
             wrap: true,
-            ...opts
+            ...opts,
         };
     }
 
@@ -205,7 +205,7 @@ export default class MidasStringifier extends Stringifier {
                             this.spaces.before,
                             span('[', 'attribute-brace'),
                             this.ns,
-                            span(this.attribute, 'attribute-name')
+                            span(this.attribute, 'attribute-name'),
                         ];
 
                         if (this.operator) {
@@ -238,7 +238,7 @@ export default class MidasStringifier extends Stringifier {
                             this.spaces.before,
                             span(String(this.value), 'pseudo'),
                             params,
-                            this.spaces.after
+                            this.spaces.after,
                         ].join('');
                     };
                 }
@@ -248,7 +248,7 @@ export default class MidasStringifier extends Stringifier {
                             this.spaces.before,
                             this.ns,
                             span(String('.' + this.value), 'class'),
-                            this.spaces.after
+                            this.spaces.after,
                         ].join('');
                     };
                 }
@@ -258,7 +258,7 @@ export default class MidasStringifier extends Stringifier {
                             this.spaces.before,
                             this.ns,
                             span(String('#' + this.value), 'id'),
-                            this.spaces.after
+                            this.spaces.after,
                         ].join('');
                     };
                 }
