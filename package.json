@@ -14,8 +14,9 @@
   "scripts": {
     "pretest": "eslint src",
     "prepublish": "del-cli dist && cross-env BABEL_ENV=publish babel src --out-dir dist --ignore /__tests__/ && node theme.js",
-    "test": "ava src/__tests__/*.js",
-    "test-012": "ava src/__tests__/*.js"
+    "report": "nyc report --reporter=html",
+    "test": "nyc ava src/__tests__/*.js",
+    "test-012": "nyc ava src/__tests__/*.js"
   },
   "keywords": [
     "css",
@@ -39,6 +40,7 @@
     "eslint-plugin-babel": "^3.3.0",
     "eslint-plugin-import": "^1.10.2",
     "js-yaml": "^3.4.1",
+    "nyc": "^7.0.0",
     "postcss-map": "^0.8.0"
   },
   "homepage": "https://github.com/ben-eb/midas",
