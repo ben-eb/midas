@@ -21,8 +21,9 @@ type MidasOptions = {
  *
  * @constructor
  * @param {Object} [opts] Options object.
- * @param {Function} [opts.stringify=toHTML] Pass in a function to convert HAST
+ * @param {Function|boolean} [opts.stringify=toHTML] Pass in a function to convert HAST
  * into a string. This defaults to {@link https://github.com/wooorm/hast-util-to-html|hast-util-to-html}.
+ * If `false`, processing a CSS string will yield HAST instead.
  * @param {boolean} [opts.wrap=true] Wrap the output with `<pre class="midas"></pre>`.
  * By default, the CSS will also be wrapped with `<code></code>`.
  */
@@ -46,6 +47,8 @@ class Midas {
      * Convert a CSS string to either a HTML string or a virtual DOM tree.
      *
      * @param css CSS string to process.
+     * @param args The rest of the options are passed directly to the
+     * `stringify` function defined by the constructor.
      * @return {*|Array} Returns either anything invoked by calling the
      * `stringify` function, or if no `stringify` method is supplied, it
      * returns HAST instead.
@@ -74,11 +77,11 @@ class Midas {
      * );
      */
 
-    process (css: string) {
+    process (css: string, ...args: any) {
         const ast = this._vdom.getContent(postcss().process(css).root);
 
         if (typeof this._stringify === 'function') {
-            return this._stringify(ast);
+            return this._stringify(ast, ...args);
         }
 
         return ast;
