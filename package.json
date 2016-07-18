@@ -58,6 +58,8 @@
   },
   "repository": "ben-eb/midas",
   "dependencies": {
+    "hast-util-to-html": "^2.0.1",
+    "hastscript": "^3.0.0",
     "html-tags": "^1.1.1",
     "minimist": "^1.2.0",
     "postcss": "^5.0.4",

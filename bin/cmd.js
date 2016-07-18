@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
 var fs = require('fs');
-var midas = require('../dist');
 var read = require('read-file-stdin');
 var write = require('write-file-stdout');
+var Midas = require('../dist');
 
 var opts = require('minimist')(process.argv.slice(2), {
     alias: {
         h: 'help',
-        v: 'version'
-    }
+        v: 'version',
+    },
 });
 
 if (opts.version) {
@@ -29,5 +29,6 @@ read(file, function (err, buf) {
     if (err) {
         throw err;
     }
-    write(out, String(midas(String(buf)).content));
+    const midas = new Midas();
+    write(out, String(midas.process(String(buf))));
 });
