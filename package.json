@@ -15,8 +15,8 @@
     "pretest": "eslint src",
     "prepublish": "del-cli dist && cross-env BABEL_ENV=publish babel src --out-dir dist --ignore /__tests__/ && node theme.js",
     "report": "nyc report --reporter=html",
-    "test": "nyc ava src/__tests__/*.js",
-    "test-012": "nyc ava src/__tests__/*.js"
+    "test": "cross-env BABEL_ENV=test nyc ava src/__tests__/*.js",
+    "test-012": "cross-env BABEL_ENV=test nyc ava src/__tests__/*.js"
   },
   "keywords": [
     "css",
@@ -30,6 +30,7 @@
     "babel-cli": "^6.5.1",
     "babel-core": "^6.5.1",
     "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-istanbul": "^1.0.3",
     "babel-preset-es2015-loose": "^7.0.0",
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.9.0",
@@ -64,5 +65,9 @@
   },
   "eslintConfig": {
     "extends": "cssnano"
+  },
+  "nyc": {
+    "sourceMap": false,
+    "instrument": false
   }
 }
