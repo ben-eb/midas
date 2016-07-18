@@ -4,11 +4,11 @@ import htmlTags from 'html-tags';
 import selectorParser from 'postcss-selector-parser';
 import valueParser, {unit} from 'postcss-value-parser';
 import h from 'hastscript';
+import vendors from 'vendors';
 import hspan from './hspan';
 import mediaTypes from './mediaTypes';
 import {raw, rawValue} from './raws';
 import * as t from './types';
-import vendors from './vendors';
 
 function walkDeclValues (values, container) {
     values.nodes.forEach(node => {
@@ -325,10 +325,11 @@ class ToVDOM {
         const {ast} = this;
 
         const hasVendor = vendors.some(vendor => {
-            if (!node.prop.indexOf(vendor)) {
+            const prefix = `-${vendor}-`;
+            if (!node.prop.indexOf(prefix)) {
                 ast.push(hspan(t.property, [
-                    hspan(t.vendorPrefix, vendor),
-                    node.prop.replace(vendor, ''),
+                    hspan(t.vendorPrefix, prefix),
+                    node.prop.replace(prefix, ''),
                 ]));
                 return true;
             }
