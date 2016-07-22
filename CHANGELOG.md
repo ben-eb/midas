@@ -1,3 +1,27 @@
+# 2.0.0
+
+* Adds the ability to render a virtual DOM. A new option, `stringify` is
+  provided, which will yield the internal HAST to the supplied function. By
+  default this uses `hast-util-to-html`, so that you can use Midas to render
+  HTML as before. But, if `false` is passed instead, Midas will return the HAST
+  instead of a string; this makes it easy to use in libraries that rely on
+  virtual DOM, such as React.
+
+## Breaking changes
+
+* The main `midas` export is now a constructor function `Midas` which accepts
+  an options object, and exposes a `.stringifier` property for PostCSS usage
+  and a `process` method for other usage.
+* Midas cannot be passed in directly to PostCSS anymore, you must instantiate
+  it and then pass the instance's `stringifier` property to PostCSS.
+* The `wrap` option will now wrap the root `<code></code>` node with
+  `<pre class="midas"></pre>`. Unlike before, setting this to `false` will not
+  remove the `<code></code>` from the string, as virtual DOM requires a single
+  root element.
+* The CLI for this module does not make sense now that Midas can yield virtual
+  DOM as well as the previous behaviour of returning a string. It has been
+  removed entirely.
+
 # 1.2.2
 
 * midas did not properly parse certain custom media queries and would crash
