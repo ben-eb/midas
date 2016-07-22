@@ -12,8 +12,8 @@
     "pretest": "eslint src && flow check",
     "prepublish": "del-cli dist && cross-env BABEL_ENV=publish babel src --out-dir dist --ignore /__tests__/ && node theme.js",
     "report": "nyc report --reporter=html",
-    "test": "cross-env BABEL_ENV=test nyc ava src/__tests__/*.js",
-    "test-012": "cross-env BABEL_ENV=test nyc ava src/__tests__/*.js"
+    "test": "cross-env BABEL_ENV=test nyc ava",
+    "test-012": "cross-env BABEL_ENV=test nyc ava"
   },
   "keywords": [
     "css",
@@ -57,15 +57,13 @@
     "hast-util-to-html": "^2.0.1",
     "hastscript": "^3.0.0",
     "html-tags": "^1.1.1",
-    "minimist": "^1.2.0",
     "postcss": "^5.0.4",
     "postcss-selector-parser": "^2.0.0",
     "postcss-value-parser": "^3.3.0",
-    "read-file-stdin": "^0.2.0",
-    "vendors": "^1.0.0",
-    "write-file-stdout": "0.0.2"
+    "vendors": "^1.0.0"
   },
   "ava": {
+    "babel": "inherit",
     "require": "babel-register"
   },
   "eslintConfig": {
