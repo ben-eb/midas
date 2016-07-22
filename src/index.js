@@ -15,9 +15,13 @@ type MidasOptions = {
 
 /**
  * Midas takes a CSS string, and compiles it into a HTML output that's complete
- * with styling hooks, for powerful syntax highlighting. It can handle both
- * a HTML string and also a virtual DOM tree, for usage with React or other
+ * with styling hooks, for powerful syntax highlighting. It can yield either
+ * a HTML string, or a virtual DOM tree for usage with React or other
  * virtual node consumers.
+ *
+ * #### Plugins
+ *
+ * * {@link https://github.com/wooorm/remark|remark}: {@link https://github.com/ben-eb/remark-midas|remark-midas}
  *
  * @constructor
  * @param {Object} [opts] Options object.
@@ -103,7 +107,7 @@ class Midas {
      *
      * postcss().process(css, {stringifier: midas.stringifier}).then(result => {
      *     console.log(result.content); // <pre class="midas"><code>...
-     * })
+     * });
      */
 
     get stringifier (): StringifierType {
