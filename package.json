@@ -2,12 +2,8 @@
   "name": "midas",
   "version": "1.2.2",
   "description": "Syntax highlighter based on PostCSS.",
-  "bin": {
-    "midas": "bin/cmd.js"
-  },
   "main": "dist/index.js",
   "files": [
-    "bin",
     "LICENSE-MIT",
     "dist"
   ],
