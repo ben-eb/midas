@@ -21,6 +21,7 @@ type MidasOptions = {
  *
  * #### Plugins
  *
+ * * {@link https://github.com/facebook/react|react}: {@link https://github.com/ben-eb/react-midas|react-midas}
  * * {@link https://github.com/wooorm/remark|remark}: {@link https://github.com/ben-eb/remark-midas|remark-midas}
  *
  * @constructor
