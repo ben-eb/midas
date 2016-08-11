@@ -60,7 +60,7 @@
     "postcss": "^5.0.4",
     "postcss-selector-parser": "^2.0.0",
     "postcss-value-parser": "^3.3.0",
-    "vendors": "^1.0.0"
+    "vendors": "^1.0.1"
   },
   "ava": {
     "babel": "inherit",
