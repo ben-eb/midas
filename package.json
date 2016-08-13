@@ -43,7 +43,7 @@
     "eslint-plugin-import": "^1.10.2",
     "flow-bin": "^0.30.0",
     "js-yaml": "^3.4.1",
-    "nyc": "^7.0.0",
+    "nyc": "^8.0.0",
     "postcss-map": "^0.8.0"
   },
   "homepage": "https://github.com/ben-eb/midas",
