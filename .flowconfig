@@ -9,3 +9,4 @@ src
 
 [options]
 unsafe.enable_getters_and_setters=true
+sharedmemory.hash_table_pow=21
