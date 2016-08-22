@@ -40,7 +40,7 @@
     "eslint-plugin-babel": "^3.3.0",
     "eslint-plugin-flow-vars": "^0.5.0",
     "eslint-plugin-flowtype": "^2.3.0",
-    "eslint-plugin-import": "^1.10.2",
+    "eslint-plugin-import": "^1.14.0",
     "flow-bin": "^0.30.0",
     "js-yaml": "^3.4.1",
     "nyc": "^8.0.0",
