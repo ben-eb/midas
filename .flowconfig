@@ -1,4 +1,5 @@
 [ignore]
+.*/node_modules/conventional-changelog-core/.*
 dist
 node_modules
 
