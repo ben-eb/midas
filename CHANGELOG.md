@@ -1,3 +1,9 @@
+# 2.0.1
+
+* Update `hast-util-to-html` to version 3.
+* Resolves an issue where named functions inside at-rule parameters would not
+  be properly highlighted.
+
 # 2.0.0
 
 * Adds the ability to render a virtual DOM. A new option, `stringify` is
