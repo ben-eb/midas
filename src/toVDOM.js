@@ -225,30 +225,50 @@ class ToVDOM {
                     container.push(hspan(t.atRuleKeyword, value));
                     return;
                 }
-                if (type === 'function' && !value) {
-                    container.push(hspan(t.parenthesis, '('));
+                if (type === t.func) {
+                    const funcValues = [];
+
+                    if (value) {
+                        funcValues.push(hspan(t.funcName, value));
+                    }
+
+                    funcValues.push(
+                        hspan(t.parenthesis, '(')
+                    );
+
                     child.nodes.forEach((n, i) => {
                         if (n.type === 'div' && n.value === ':') {
-                            container.push(hspan(t.colon, `${n.before}${n.value}${n.after}`));
+                            funcValues.push(hspan(t.colon, `${n.before}${n.value}${n.after}`));
                             return;
                         }
                         if (n.type === t.word) {
                             let number = unit(n.value);
                             if (number) {
-                                container.push(hspan(t.number, n.value));
+                                funcValues.push(hspan(t.number, n.value));
                                 return;
                             }
                             if (
                                 child.nodes[i + 1] &&
                                 child.nodes[i + 1].value === ':'
                             ) {
-                                container.push(hspan(t.property, n.value));
+                                funcValues.push(hspan(t.property, n.value));
                                 return;
                             }
                         }
-                        container.push(n.value);
+                        if (n.type === t.string) {
+                            const {quote} = n;
+                            funcValues.push(hspan(t.string, `${quote}${n.value}${quote}`));
+                            return;
+                        }
+                        funcValues.push(n.value);
                     });
-                    container.push(hspan(t.parenthesis, ')'));
+                    funcValues.push(
+                        hspan(t.parenthesis, ')'),
+                    );
+
+                    container.push(
+                        hspan(t.func, funcValues),
+                    );
                     return;
                 }
                 if (type === 'div') {

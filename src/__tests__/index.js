@@ -42,7 +42,7 @@ const tests = [{
     expected: '<code><span class="midas__at-rule"><span class="midas__at-rule-name">@keyframes</span> fade</span> <span class="midas__brace">{</span> <span class="midas__selector">0%</span> <span class="midas__brace">{</span> <span class="midas__property">opacity</span><span class="midas__colon">: </span><span class="midas__value"><span class="midas__number">1</span></span> <span class="midas__brace">}</span> <span class="midas__selector">to</span> <span class="midas__brace">{</span> <span class="midas__property">opacity</span><span class="midas__colon">: </span><span class="midas__value"><span class="midas__number">0</span></span> <span class="midas__brace">}</span> <span class="midas__brace">}</span></code>',
 }, {
     fixture: '@media screen and (min-width: 500px) {}',
-    expected: '<code><span class="midas__at-rule"><span class="midas__at-rule-name">@media</span> <span class="midas__at-rule-keyword">screen</span> and <span class="midas__parenthesis">(</span><span class="midas__property">min-width</span><span class="midas__colon">: </span><span class="midas__number">500px</span><span class="midas__parenthesis">)</span></span> <span class="midas__brace">{</span><span class="midas__brace">}</span></code>',
+    expected: '<code><span class="midas__at-rule"><span class="midas__at-rule-name">@media</span> <span class="midas__at-rule-keyword">screen</span> and <span class="midas__function"><span class="midas__parenthesis">(</span><span class="midas__property">min-width</span><span class="midas__colon">: </span><span class="midas__number">500px</span><span class="midas__parenthesis">)</span></span></span> <span class="midas__brace">{</span><span class="midas__brace">}</span></code>',
 }, {
     fixture: 'h1:not(.header) { color: red }',
     expected: '<code><span class="midas__selector"><span class="midas__tag">h1</span><span class="midas__pseudo">:not</span><span class="midas__parenthesis">(</span><span class="midas__class">.header</span><span class="midas__parenthesis">)</span></span> <span class="midas__brace">{</span> <span class="midas__property">color</span><span class="midas__colon">: </span><span class="midas__value"><span class="midas__word">red</span></span> <span class="midas__brace">}</span></code>',
@@ -54,7 +54,7 @@ const tests = [{
     expected: '<code><span class=\"midas__selector\"><span class=\"midas__universal\">*</span></span><span class=\"midas__brace\">{</span><span class=\"midas__property\">filter</span><span class=\"midas__colon\">:</span><span class=\"midas__value\"><span class=\"midas__function\"><span class=\"midas__function-name\">blur</span><span class=\"midas__parenthesis\">( </span><span class=\"midas__number\">5px</span><span class=\"midas__parenthesis\"> )</span></span></span><span class=\"midas__brace\">}</span></code>',
 }, {
     fixture: '$small:  34em;\n\n@custom-media --small (width >= $small);',
-    expected: '<code><span class=\"midas__property\">$small</span><span class=\"midas__colon\">:  </span><span class=\"midas__value\"><span class=\"midas__number\">34em</span></span><span class=\"midas__semicolon\">;</span>\n\n<span class=\"midas__at-rule\"><span class=\"midas__at-rule-name\">@custom-media</span> --small <span class=\"midas__parenthesis\">(</span>width >= $small<span class=\"midas__parenthesis\">)</span><span class=\"midas__semicolon\">;</span></span></code>',
+    expected: '<code><span class=\"midas__property\">$small</span><span class=\"midas__colon\">:  </span><span class=\"midas__value\"><span class=\"midas__number\">34em</span></span><span class=\"midas__semicolon\">;</span>\n\n<span class=\"midas__at-rule\"><span class=\"midas__at-rule-name\">@custom-media</span> --small <span class=\"midas__function\"><span class=\"midas__parenthesis\">(</span>width >= $small<span class=\"midas__parenthesis\">)</span></span><span class=\"midas__semicolon\">;</span></span></code>',
 }, {
     fixture: 'h1{-webkit-border-radius: 5px}',
     expected: '<code><span class=\"midas__selector\"><span class=\"midas__tag\">h1</span></span><span class=\"midas__brace\">{</span><span class=\"midas__property\"><span class=\"midas__vendor-prefix\">-webkit-</span>border-radius</span><span class=\"midas__colon\">: </span><span class=\"midas__value\"><span class=\"midas__number\">5px</span></span><span class=\"midas__brace\">}</span></code>',
@@ -82,6 +82,9 @@ const tests = [{
 }, {
     fixture: '@media print, screen{}',
     expected: '<code><span class=\"midas__at-rule\"><span class=\"midas__at-rule-name\">@media</span> <span class=\"midas__at-rule-keyword\">print</span>, <span class=\"midas__at-rule-keyword\">screen</span></span><span class=\"midas__brace\">{</span><span class=\"midas__brace\">}</span></code>',
+}, {
+    fixture: '@namespace islands url("http://bar.yandex.ru/ui/islands");',
+    expected: '<code><span class=\"midas__at-rule\"><span class=\"midas__at-rule-name\">@namespace</span> islands <span class=\"midas__function\"><span class=\"midas__function-name\">url</span><span class=\"midas__parenthesis\">(</span><span class=\"midas__string\">\"http://bar.yandex.ru/ui/islands\"</span><span class=\"midas__parenthesis\">)</span></span><span class=\"midas__semicolon\">;</span></span></code>',
 }];
 
 const wrapper = new Midas({wrap: true});
