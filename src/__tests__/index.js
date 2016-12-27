@@ -85,6 +85,9 @@ const tests = [{
 }, {
     fixture: '@namespace islands url("http://bar.yandex.ru/ui/islands");',
     expected: '<code><span class=\"midas__at-rule\"><span class=\"midas__at-rule-name\">@namespace</span> islands <span class=\"midas__function\"><span class=\"midas__function-name\">url</span><span class=\"midas__parenthesis\">(</span><span class=\"midas__string\">\"http://bar.yandex.ru/ui/islands\"</span><span class=\"midas__parenthesis\">)</span></span><span class=\"midas__semicolon\">;</span></span></code>',
+}, {
+    fixture: '@media ( min-aspect-ratio: 16 / 9 ) {}',
+    expected: '<code><span class=\"midas__at-rule\"><span class=\"midas__at-rule-name\">@media</span> <span class=\"midas__function\"><span class=\"midas__parenthesis\">(</span> <span class=\"midas__property\">min-aspect-ratio</span><span class=\"midas__colon\">: </span><span class=\"midas__number\">16</span> / <span class=\"midas__number\">9</span> <span class=\"midas__parenthesis\">)</span></span></span> <span class=\"midas__brace\">{</span><span class=\"midas__brace\">}</span></code>',
 }];
 
 const wrapper = new Midas({wrap: true});

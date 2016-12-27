@@ -233,12 +233,17 @@ class ToVDOM {
                     }
 
                     funcValues.push(
-                        hspan(t.parenthesis, '(')
+                        hspan(t.parenthesis, '('),
+                        child.before
                     );
 
                     child.nodes.forEach((n, i) => {
                         if (n.type === 'div' && n.value === ':') {
                             funcValues.push(hspan(t.colon, `${n.before}${n.value}${n.after}`));
+                            return;
+                        }
+                        if (n.type === 'div') {
+                            funcValues.push(`${n.before}${n.value}${n.after}`);
                             return;
                         }
                         if (n.type === t.word) {
@@ -263,6 +268,7 @@ class ToVDOM {
                         funcValues.push(n.value);
                     });
                     funcValues.push(
+                        child.after,
                         hspan(t.parenthesis, ')'),
                     );
 
