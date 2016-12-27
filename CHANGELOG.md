@@ -1,3 +1,7 @@
+# 2.0.2
+
+* Better handling of spaces within at-rule parameters.
+
 # 2.0.1
 
 * Update `hast-util-to-html` to version 3.
