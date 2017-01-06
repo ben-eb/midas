@@ -189,3 +189,9 @@ test(
     '@media ( min-aspect-ratio: 16 / 9 ) {}',
     '<code><span class=\"midas__at-rule\"><span class=\"midas__at-rule-name\">@media</span> <span class=\"midas__function\"><span class=\"midas__parenthesis\">(</span> <span class=\"midas__property\">min-aspect-ratio</span><span class=\"midas__colon\">: </span><span class=\"midas__number\">16</span> / <span class=\"midas__number\">9</span> <span class=\"midas__parenthesis\">)</span></span></span> <span class=\"midas__brace\">{</span><span class=\"midas__brace\">}</span></code>'
 );
+
+test(
+    processCss,
+    'islands|div{}',
+    '<code><span class="midas__selector">islands|<span class="midas__tag">div</span></span><span class="midas__brace">{</span><span class="midas__brace">}</span></code>'
+);

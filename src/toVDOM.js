@@ -127,9 +127,15 @@ function selectorValues (reference) {
                 }
                 if (type === t.tag) {
                     if (~htmlTags.indexOf(value)) {
-                        push(node, hspan(t.tag, value));
+                        push(node, [
+                            node.ns,
+                            hspan(t.tag, value),
+                        ]);
                     } else {
-                        push(node, value);
+                        push(node, [
+                            node.ns,
+                            value,
+                        ]);
                     }
                 }
                 if (type === t.className) {
