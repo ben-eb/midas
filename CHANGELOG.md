@@ -1,3 +1,8 @@
+# 2.0.3
+
+* Resolves an issue where a namespace would not appear in the output - e.g.
+  `islands|div` would simply show `div`.
+
 # 2.0.2
 
 * Better handling of spaces within at-rule parameters.
